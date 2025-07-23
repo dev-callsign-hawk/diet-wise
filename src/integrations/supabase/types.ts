@@ -14,7 +14,151 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      diet_plans: {
+        Row: {
+          breakfast: Json
+          created_at: string
+          daily_calories: number
+          dinner: Json
+          goal_id: string
+          id: string
+          lunch: Json
+          snacks: Json | null
+          user_id: string
+        }
+        Insert: {
+          breakfast: Json
+          created_at?: string
+          daily_calories: number
+          dinner: Json
+          goal_id: string
+          id?: string
+          lunch: Json
+          snacks?: Json | null
+          user_id: string
+        }
+        Update: {
+          breakfast?: Json
+          created_at?: string
+          daily_calories?: number
+          dinner?: Json
+          goal_id?: string
+          id?: string
+          lunch?: Json
+          snacks?: Json | null
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "fk_diet_plans_goal_id"
+            columns: ["goal_id"]
+            isOneToOne: false
+            referencedRelation: "goals"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      goals: {
+        Row: {
+          age: number
+          created_at: string
+          current_weight: number
+          diet_preference: string
+          goal_duration_weeks: number
+          goal_type: string
+          id: string
+          status: string
+          target_weight: number
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          age: number
+          created_at?: string
+          current_weight: number
+          diet_preference: string
+          goal_duration_weeks: number
+          goal_type: string
+          id?: string
+          status?: string
+          target_weight: number
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          age?: number
+          created_at?: string
+          current_weight?: number
+          diet_preference?: string
+          goal_duration_weeks?: number
+          goal_type?: string
+          id?: string
+          status?: string
+          target_weight?: number
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      profiles: {
+        Row: {
+          created_at: string
+          email: string | null
+          full_name: string | null
+          id: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          email?: string | null
+          full_name?: string | null
+          id?: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          email?: string | null
+          full_name?: string | null
+          id?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      user_history: {
+        Row: {
+          current_weight: number | null
+          goal_id: string
+          id: string
+          recorded_at: string
+          user_id: string
+        }
+        Insert: {
+          current_weight?: number | null
+          goal_id: string
+          id?: string
+          recorded_at?: string
+          user_id: string
+        }
+        Update: {
+          current_weight?: number | null
+          goal_id?: string
+          id?: string
+          recorded_at?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "fk_user_history_goal_id"
+            columns: ["goal_id"]
+            isOneToOne: false
+            referencedRelation: "goals"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
     }
     Views: {
       [_ in never]: never
