@@ -1,1 +1,4 @@
 project_id = "ciiccoprevadrcqslmby"
+
+[functions.generate-diet-plan]
+verify_jwt = false
