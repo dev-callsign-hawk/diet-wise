@@ -9,6 +9,7 @@ import Auth from "./pages/Auth";
 import GoalSelection from "./pages/GoalSelection";
 import GoalSetup from "./pages/GoalSetup";
 import Dashboard from "./pages/Dashboard";
+import History from "./pages/History";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -63,6 +64,14 @@ const App = () => (
               element={
                 <ProtectedRoute>
                   <Dashboard />
+                </ProtectedRoute>
+              } 
+            />
+            <Route 
+              path="/history" 
+              element={
+                <ProtectedRoute>
+                  <History />
                 </ProtectedRoute>
               } 
             />
